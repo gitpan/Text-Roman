@@ -1,70 +1,36 @@
-NAME
-    Text::Roman - Converts roman algarism in integer numbers and the
-    contrary, recognize algarisms.
+Text-Roman version 1.3
+======================
 
-SYNOPSIS
-            use Text::Roman;
+This module allows conversions between Roman and Arabic algarisms.
 
-            print roman(123);
+INSTALLATION
 
-DESCRIPTION
-    Text::Roman::roman() is a very simple algarism converter. It
-    converts a single integer (in arabic algarisms) at a time to its
-    roman correspondent. The conventional roman numbers goes from 1
-    up to 3999. MROMANS (milhar romans) range is 1 up to
-    3999*1000+3999=4002999.
+To install this module type the following:
 
-    Up to these number we will found symbols as:??????but they do
-    not concern this specific package. There is no concern for mix
-    cases, like 'Xv', 'XiiI', as legal roman algarism numbers.
+   perl Makefile.PL
+   make
+   make test
+   make install
 
-    roman($int): return string containing  the roman corresponding to the given integer, or '' if the integer is out of domain...
-    roman2int($str): return '' if $str is not roman or return integer if it is.
-    isroman($str): verify whether the given string is a conventional roman number, if it is return 1; if it is not return 0...
-    Quite same follows for mroman2int($str) and ismroman($str),
-    except that these functions treat milhar romans.
+DOCUMENTATION
 
-SPECIFICATION
-    Roman number has origin in following BNF-like formula:
+Full documentation available in the POD.
 
-    a = I{1,3}
+NOTES
 
-    b = V\a?|IV|\a
+This module was originally written by Peter de Padua
+Krauss <krauss@ifqsc.sc.usp.br> and submitted to CPAN by
+Stanislaw Pusep <stanis@linuxmail.org> who has relinquished
+control to me since the original author has never maintained
+it and can no longer be reached.
 
-    e = X{1,3}\b?|X{0,3}IX|\b
+I have completely rewritten the module, implementing simpler
+algorithms to perform the same functionality, adding a test
+suite, a Changes file, etc.  and providing more comprehensive
+documentation.  Questions/suggestions regarding this module
+can now come to me (see AUTHOR section in the docs).
 
-    ee = IX|\b
+WARNING
 
-    f = L\e?|XL\ee?|\e
-
-    g = C{1,3}\f?|C{0,3}XC\ee?|\f
-
-    gg = XC\ee?|\f
-
-    h = D\g?|CD\gg?|\g
-
-    j = M{1,3}\h?|M{0,3}CM\gg?|\h
-
-REFERENCES
-    Especification supplied by redactor's manual of newspaper "O
-    Estado de São Paulo". URL: http://www.estado.com.br/redac/norn-
-    nro.html
-
-EXAMPLE
-            use Text::Roman;
-            
-            $roman  = "XXXV";
-            $mroman = 'L_X_XXIII';
-            print roman(123), "\n";
-            print roman2int($roman), "\n"   if isroman($roman);
-            print mroman2int($mroman), "\n" if ismroman($mroman);
-
-BUGS
-    No one known.
-
-AUTHOR
-    Peter de Padua Krauss, krauss@ifqsc.sc.usp.br.
-
-COPYRIGHT
-    1.2-krauss/set/97; 1.0-krauss/3/ago/97
-
+Be advised that this release supports the old interface to the
+module but that it is now deprecated.  Please consult docs before using!
