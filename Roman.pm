@@ -32,7 +32,7 @@ use strict;
 use Exporter;
 
 use vars qw/$VERSION @ISA @EXPORT_OK/;
-$VERSION    = substr q$Revision: 3.02 $, 10;
+$VERSION    = substr q$Revision: 3.3 $, 10;
 @ISA        = qw/Exporter/;
 @EXPORT_OK  = qw/
     int2roman roman2int isroman milhar2int ismilhar
@@ -154,11 +154,11 @@ These functions belong to the module's old interface and are considered deprecat
 
 =over
 
-=item I<ismroman> => I<ismilhar>
+=item ismroman   => B<ismilhar>
 
-=item I<mroman2int> => I<milhar2int>
+=item mroman2int => B<milhar2int>
 
-=item I<roman> => I<int2roman>
+=item roman      => B<int2roman>
 
 =back
 
@@ -230,10 +230,10 @@ F<http://perl.arix.com>
 
 =head1 DATE
 
-$Date: 2003/01/16 01:12:15 $
+$Date: 2003/01/16 01:56:34 $
 
 =head1 VERSION
 
-$Revision: 3.02 $
+$Revision: 3.3 $
 
 =cut

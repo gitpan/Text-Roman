@@ -1,4 +1,4 @@
-Text-Roman version 1.3
+Text-Roman version 3.3
 ======================
 
 This module allows conversions between Roman and Arabic algarisms.
@@ -18,19 +18,14 @@ Full documentation available in the POD.
 
 NOTES
 
-This module was originally written by Peter de Padua
-Krauss <krauss@ifqsc.sc.usp.br> and submitted to CPAN by
-Stanislaw Pusep <stanis@linuxmail.org> who has relinquished
-control to me since the original author has never maintained
-it and can no longer be reached.
-
-I have completely rewritten the module, implementing simpler
+I have completely rewritten this module, implementing simpler
 algorithms to perform the same functionality, adding a test
 suite, a Changes file, etc.  and providing more comprehensive
-documentation.  Questions/suggestions regarding this module
-can now come to me (see AUTHOR section in the docs).
+documentation.  For a history of the module and credits to others
+involved please the the man page.  Questions/suggestions may 
+now come to me (see AUTHOR section in the docs).
 
 WARNING
 
-Be advised that this release supports the old interface to the
-module but that it is now deprecated.  Please consult docs before using!
+Be advised that whilst this release supports the old interface,
+it is now considered deprecated.  Please consult docs before using!
