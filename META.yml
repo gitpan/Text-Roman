@@ -1,0 +1,32 @@
+---
+abstract: 'Converts Roman algorism to integer numbers and the contrary, recognize algorisms'
+author:
+  - 'Stanislaw Pusep <stas@sysd.org>'
+build_requires:
+  English: 0
+  File::Find: 0
+  File::Temp: 0
+  Test::More: 0
+  Test::Requires: 0
+  perl: 5.006
+configure_requires:
+  ExtUtils::MakeMaker: 6.30
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300006, CPAN::Meta::Converter version 2.113640'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Text-Roman
+requires:
+  Exporter: 0
+  base: 0
+  perl: 5.008
+  strict: 0
+  utf8: 0
+  warnings: 0
+resources:
+  bugtracker: https://github.com/creaktive/Text-Roman/issues
+  homepage: https://github.com/creaktive/Text-Roman
+  repository: git://github.com/creaktive/Text-Roman.git
+version: 3.02

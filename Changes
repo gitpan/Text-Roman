@@ -1,36 +1,5 @@
-Revision history for Perl extension Text-Roman
+Changelog for Text::Roman
 
-revision 3.3
-date: 2003/01/16 01:56:34;  author: ekkis;  state: Exp;  lines: +6 -6
-- needed to bump up version as I forgot test.pl in MANIFEST
-- cleaned up POD a little
+3.02      2012-02-01
 
-revision 3.02
-date: 2003/01/16 01:12:15;  author: ekkis;  state: Exp;  lines: +3 -3
-- upping revision number to succed older module in CPAN
-
-revision 1.4
-date: 2003/01/16 01:06:41;  author: ekkis;  state: Exp;  lines: +77 -8
-- added backward compatibility to module
-- added CHANGES section to POD + ACKNOWLEGEMENTS, AVAILABILITY, etc.
-
-revision 1.3
-date: 2003/01/15 22:22:30;  author: ekkis;  state: Exp;  lines: +81 -95
-- converted Milhar functions
-- finalised POD changes
-
-revision 1.2
-date: 2003/01/15 10:27:35;  author: ekkis;  state: Exp;  lines: +108 -183
-- now uses strict and warnings
-- inline POD
-- complete rewrite of roman(), isroman() and roman2int() using my own algorithms
-- now only exports_ok
-
-revision 1.1
-date: 2003/01/15 01:55:46;  author: ekkis;  state: Exp;
-branches:  1.1.1;
-Initial revision
-
-revision 1.1.1.1
-date: 2003/01/15 01:55:46;  author: ekkis;  state: Exp;  lines: +0 -0
-Initial import
+3.01      2000-05-21
