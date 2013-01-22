@@ -1,5 +1,20 @@
-Changelog for Text::Roman
+Changelog for Text-Roman
 
-3.02      2012-02-01
+3.4 2013-01-22T20:39:12
+ [Stanislaw Pusep <creaktive@gmail.com>]
+ - merge complete
 
-3.01      2000-05-21
+ - merging back with ECALDER fork
+
+
+ [Stanislaw Pusep <stanislav.poussep@buscape-inc.com>]
+ - Changes
+
+
+v3.02 2012-02-01T18:29:16
+ [Stanislaw Pusep <stanislav.poussep@buscape-inc.com>]
+ - CPAN test compliance
+
+ - released at CPAN
+
+
