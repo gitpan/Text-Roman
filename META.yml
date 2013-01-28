@@ -19,11 +19,11 @@ name: Text-Roman
 requires:
   Carp: 0
   Exporter: 0
-  perl: 5.006002
+  perl: 5.006
   strict: 0
   warnings: 0
 resources:
   bugtracker: https://github.com/creaktive/Text-Roman/issues
   homepage: https://github.com/creaktive/Text-Roman
   repository: git://github.com/creaktive/Text-Roman.git
-version: 3.4
+version: 3.5

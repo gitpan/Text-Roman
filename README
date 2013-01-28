@@ -2,7 +2,7 @@ NAME
     Text::Roman - Allows conversion between Roman and Arabic algarisms.
 
 VERSION
-    version 3.4
+    version 3.5
 
 SYNOPSIS
         #!/usr/bin/env perl

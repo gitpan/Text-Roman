@@ -6,12 +6,15 @@ META.yml
 Makefile.PL
 README
 dist.ini
+eg/unroman.pl
 lib/Text/Roman.pm
 perlcritic.rc
 t/00-compile.t
 t/00-load.t
 t/05-ecalder.t
 t/10-simple.t
+t/11-void.t
+t/15-aliased.t
 t/20-predef.t
 t/author-critic.t
 t/author-test-eol.t

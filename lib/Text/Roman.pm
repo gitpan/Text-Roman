@@ -13,7 +13,7 @@ our @ISA            = qw(Exporter);
 our %EXPORT_TAGS    = (all => [qw(roman int2roman roman2int isroman mroman2int milhar2int ismroman ismilhar)]);
 our @EXPORT_OK      = @{$EXPORT_TAGS{all}};
 
-our $VERSION = '3.4'; # VERSION
+our $VERSION = '3.5'; # VERSION
 
 our @RSN = qw/I V X L C D M/;                           # Roman Simple Numerals
 our @RCN = qw/IV IX XL XC CD CM/;                       # Roman Complex Numerals
@@ -24,11 +24,12 @@ our %R2A;
 our %A2R = reverse %R2A;                                # reverse for convenience
 
 
+## no critic (RequireArgUnpacking)
 sub isroman {
-    local $_ = shift || $_;                             # roman algarism
+    local $_ = uc(@_ ? shift : $_);
 
     return if !/^[@RSN]+$/x;
-    return if /([IXCM])\1{3,}|([VLD])\2+/ix;            # tests repeatability
+    return if /([IXCM])\1{3,}|([VLD])\2+/x;             # tests repeatability
     my @re = qw/IXI|XCX|CMC/;
     for (1 .. $#RSN) {
         push @re, "$RSN[$_ - 1]$RSN[$_]$RSN[$_ - 1]";   # tests IVI
@@ -40,36 +41,47 @@ sub isroman {
 
 
 sub int2roman {
-    my $n = shift || $_;                                # number, arabic numerals
-    return if $n <= 0 or $n >= 4000;
+    my $n = @_ ? shift : $_;
+    return
+        if not $n =~ /^[0-9]+$/x
+        or $n <= 0
+        or $n >= 4000;
 
-    my $ret = "";
+    my $ret = '';
     for (reverse sort { $a <=> $b } values %R2A) {
         $ret .= $A2R{$_} x int($n / $_);
         $n %= $_;
     }
-    return $ret;
+
+    return defined(wantarray)
+        ? $ret
+        : $_ = $ret;
 }
 
 
 sub roman2int {
-    local $_ = uc(shift || $_);                         # roman algarism
+    my $ret = 0;
+    do {
+        local $_ = uc(@_ ? shift : $_);
 
-    return unless isroman();
+        return unless isroman();
 
-    my ($r, $ret, $_ret) = ($_, 0, 0);
-    while ($r) {
-        ## no critic (ProhibitMatchVars)
-        $r =~ s/^$_//x && ($ret += $R2A{$&}, last) for @RCN, @RSN;
-        return if $ret <= $_ret;
-        $_ret = $ret;
-    }
-    return $ret;
+        my ($r, $_ret) = ($_, 0);
+        while ($r) {
+            $r =~ s/^$_//x and ($ret += $R2A{$_}, last) for @RCN, @RSN;
+            return if $ret <= $_ret;
+            $_ret = $ret;
+        }
+    };
+
+    return defined(wantarray)
+        ? $ret
+        : $_ = $ret;
 }
 
 
 sub ismilhar {
-    local $_ = shift || $_;
+    local $_ = uc(@_ ? shift : $_);
     return unless /^[_@RSN]+$/x;
 
     my @r = split /_/;
@@ -79,30 +91,39 @@ sub ismilhar {
 
 
 sub milhar2int {
-    local $_ = shift || $_;
+    my $ret;
+    do {
+        local $_ = uc(@_ ? shift : $_);
 
-    return unless ismilhar();
+        return unless ismilhar();
 
-    my @r = split /_/;
-    my $ret = roman2int(pop @r);
-    $ret += 1000 * roman2int() for @r;
-    return $ret;
+        my @r = split /_/;
+        $ret = roman2int(pop @r);
+        $ret += 1000 * roman2int() for @r;
+    };
+
+    return defined(wantarray)
+        ? $ret
+        : $_ = $ret;
 }
 
 
-sub ismroman {
-    carp "deprecated function, use ismilhar instead";
-    return ismilhar(shift);
-}
+my %deprecated = (
+    ismroman    => [ ismilhar   => \&ismilhar   ],
+    mroman2int  => [ milhar2int => \&milhar2int ],
+    roman       => [ int2roman  => \&int2roman  ],
+);
 
-sub mroman2int {
-    carp "deprecated function, use milhar2int instead";
-    return milhar2int(shift);
-}
-
-sub roman {
-    carp "deprecated function, use int2roman instead";
-    return int2roman(shift);
+for my $aliased (keys %deprecated) {
+    ## no critic (ProhibitNoStrict)
+    no strict 'refs';
+    *{'Text::Roman::' . $aliased} = sub {
+        carp sprintf(
+            '%s() deprecated, use %s() instead',
+            $aliased, $deprecated{$aliased}->[0]
+        );
+        goto $deprecated{$aliased}->[1];
+    };
 }
 
 1;
@@ -119,7 +140,7 @@ Text::Roman - Allows conversion between Roman and Arabic algarisms.
 
 =head1 VERSION
 
-version 3.4
+version 3.5
 
 =head1 SYNOPSIS
 
